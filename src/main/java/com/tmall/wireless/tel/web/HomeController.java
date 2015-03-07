@@ -100,10 +100,10 @@ public class HomeController {
 	}
 	@RequestMapping(value="/errortest",method=RequestMethod.GET)
 	public String test4() throws IOException{
-		throw new IOException("IO寮傚父");
+		throw new IOException("IO异常");
 	}
 	
-	@ExceptionHandler(IOException.class)
+	@ExceptionHandler
 	public String handleException(IOException ex){
 		System.out.println("ex");
 		return "error";
