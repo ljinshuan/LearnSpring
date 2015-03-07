@@ -15,6 +15,6 @@
 <P>  The time on the server is ${serverTime}. </P>
 
 ${userName }
-<%=request.getAttribute("userName") %>
+${userForm.username }
 </body>
 </html>

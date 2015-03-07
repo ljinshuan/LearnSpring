@@ -50,5 +50,12 @@ public class HomeController {
 		System.out.println(id);
 		return "index";
 	}
+	//返回表单对象 默认映射的视图文件为home.jsp 参数形式home?name=xxxx
+	@RequestMapping(value="/home",method=RequestMethod.GET)
+	public UserForm getForm(String name){
+		UserForm userForm=new UserForm(name,"ljsljsljs");
+		System.out.println(name);
+		return userForm;
+	}
 	
 }
