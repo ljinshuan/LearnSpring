@@ -25,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * Handles requests for the application home page.
  */
+
+
 @Controller
 public class HomeController {
 	
@@ -56,26 +58,26 @@ public class HomeController {
 		System.out.println(id);
 		return "index";
 	}
-	//���ر������� Ĭ��ӳ�����ͼ�ļ�Ϊhome.jsp ������ʽhome?name=xxxx
+	//锟斤拷锟截�锟斤拷锟斤拷 默锟斤拷映锟斤拷锟斤拷锟酵硷拷募锟轿猦ome.jsp 锟斤拷锟斤拷锟斤拷式home?name=xxxx
 	@RequestMapping(value="/home",method=RequestMethod.GET)
 	public UserForm getForm(String name){
 		UserForm userForm=new UserForm(name,"ljsljsljs");
 		System.out.println(name);
 		return userForm;
 	}
-	//���ض���Ϊmodelmap Ĭ��ҳ��ΪModelMap.jsp 
-	//ModelAndView�ɸı���ͼ�ļ���
+	//锟斤拷锟截讹拷锟斤拷为modelmap 默锟斤拷页锟斤拷为ModelMap.jsp 
+	//ModelAndView锟缴改憋拷锟斤拷图锟侥硷拷锟斤拷
 	@RequestMapping(value="/Index/ModelMap",method=RequestMethod.GET)
 	public ModelMap getModelMap(){
 		return new ModelMap("username","ljinshuan");
 	}
-	//ֻ����json���� content-type
+	//只锟斤拷锟斤拷json锟斤拷锟�content-type
 	@RequestMapping(value="/addUser",method=RequestMethod.POST,consumes="application/json")
 	public void addPet(@RequestBody UserForm userForm,Model model){
 		System.out.println(userForm.getUsername());
 	}
 	@RequestMapping(value="/addUser",method=RequestMethod.GET)
-	@ResponseBody //��ʾ���ص����ݼ�body ����Ҫjspҳ��
+	@ResponseBody //锟斤拷示锟斤拷锟截碉拷锟斤拷菁锟絙ody 锟斤拷锟斤拷要jsp页锟斤拷
 	public UserForm getUser(String name,Model model){
 		System.out.println(name);
 		return new UserForm(name,"ljinshuan");
@@ -97,8 +99,13 @@ public class HomeController {
 		return new UserForm("ljinshuan", "ljsljsljs");
 	}
 	@RequestMapping(value="/errortest",method=RequestMethod.GET)
-	
 	public String test4() throws IOException{
-		throw new IOException("IO�쳣");
+		throw new IOException("IO寮傚父");
+	}
+	
+	@ExceptionHandler(IOException.class)
+	public String handleException(IOException ex){
+		System.out.println("ex");
+		return "error";
 	}
 }

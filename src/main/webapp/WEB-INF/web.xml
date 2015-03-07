@@ -35,7 +35,10 @@
 			<el-ignored>false</el-ignored>
 		</jsp-property-group>
 	</jsp-config>
-	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/error.jsp</location>
+	</error-page>
 </web-app>
 
 
