@@ -16,5 +16,6 @@
 
 ${userName }
 ${userForm.username }
+${user }
 </body>
 </html>

@@ -11,9 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -57,5 +61,26 @@ public class HomeController {
 		System.out.println(name);
 		return userForm;
 	}
-	
+	//返回对象为modelmap 默认页面为ModelMap.jsp 
+	//ModelAndView可改变视图文件名
+	@RequestMapping(value="/Index/ModelMap",method=RequestMethod.GET)
+	public ModelMap getModelMap(){
+		return new ModelMap("username","ljinshuan");
+	}
+	//只接收json数据 content-type
+	@RequestMapping(value="/addUser",method=RequestMethod.POST,consumes="application/json")
+	public void addPet(@RequestBody UserForm userForm,Model model){
+		System.out.println(userForm.getUsername());
+	}
+	@RequestMapping(value="/addUser",method=RequestMethod.GET)
+	@ResponseBody //表示返回的数据即body 不需要jsp页面
+	public UserForm getUser(String name,Model model){
+		System.out.println(name);
+		return new UserForm(name,"ljinshuan");
+	}
+	@RequestMapping(value="/test1",method=RequestMethod.GET)
+	public String test1(@ModelAttribute(value="user") String userName){
+		System.out.println(userName);
+		return "home";
+	}
 }
