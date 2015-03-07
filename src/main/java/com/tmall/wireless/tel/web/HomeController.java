@@ -1,5 +1,6 @@
 package com.tmall.wireless.tel.web;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -93,5 +95,10 @@ public class HomeController {
 	@ResponseBody
 	public UserForm test3(){
 		return new UserForm("ljinshuan", "ljsljsljs");
+	}
+	@RequestMapping(value="/errortest",method=RequestMethod.GET)
+	
+	public String test4() throws IOException{
+		throw new IOException("IO“Ï≥£");
 	}
 }
