@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h2> 这是Index主页</h2>
 </body>
 </html>
