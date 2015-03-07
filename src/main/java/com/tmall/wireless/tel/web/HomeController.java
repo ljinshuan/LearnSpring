@@ -83,4 +83,15 @@ public class HomeController {
 		System.out.println(userName);
 		return "home";
 	}
+	@RequestMapping(value="/test2",method=RequestMethod.GET)
+	@ResponseBody
+	public String test2(){
+		return "helloworld";
+	}
+	
+	@RequestMapping(value="/test3",method=RequestMethod.GET)
+	@ResponseBody
+	public UserForm test3(){
+		return new UserForm("ljinshuan", "ljsljsljs");
+	}
 }
