@@ -1,4 +1,4 @@
-package com.tmall.wireless.tel;
+package com.tmall.wireless.tel.web;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -6,8 +6,12 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,6 +39,16 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("userName", "ljinshuan");
 		return "home";
+	}
+	@RequestMapping(value="/Index",method=RequestMethod.GET)
+	public String index(Model model){
+		model.addAttribute("name","ljinshuan");
+		return "index";
+	}
+	@RequestMapping(value="/Index/{id}",method=RequestMethod.GET)
+	public String indexId(@PathVariable String id,Model model){
+		System.out.println(id);
+		return "index";
 	}
 	
 }
