@@ -35,6 +35,17 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 
+	
+	<!-- placeholder -->
+	<!-- <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="fileEncoding" value="utf-8" />
+		<property name="locations">
+			<list>
+				<value>classpath:spring/placeholder.properties</value>
+			</list>
+		</property>
+	</bean> -->
+	
 	<bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<!-- 定义默认的异常处理页面，当该异常类型的注册时使用 -->
