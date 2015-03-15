@@ -60,10 +60,10 @@
 		</dependency>
 
 		<!-- Servlet and JSP -->
+		
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<scope>provided</scope>
+			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 
 
@@ -95,10 +95,7 @@
 			<artifactId>commons-beanutils</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-		</dependency>
+
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
