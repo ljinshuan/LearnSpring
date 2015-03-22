@@ -4,13 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tmall.wireless.shuan.UserManager;
+import com.tmall.wireless.shuan.UserManagerImpl;
 
 
 @Controller
 public class UserController {
 
-	private UserManager userManager=new UserManager();
+	private UserManagerImpl userManager=new UserManagerImpl();
 	@RequestMapping(value="/user")
 	@ResponseBody
 	public String uesrTest(String uid)	{

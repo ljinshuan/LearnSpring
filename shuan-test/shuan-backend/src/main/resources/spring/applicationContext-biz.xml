@@ -15,4 +15,15 @@
  
 	<import resource="classpath*:spring/**/spring-*.xml" /> -->
 	
+	<context:annotation-config/>
+	<context:component-scan base-package="com.tmall.wireless.shuan"/>
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="fileEncoding" value="utf-8" />
+		<property name="locations">
+			<list>
+				<value>classpath:spring/placeholder.properties</value>
+			</list>
+		</property>
+	</bean>
 </beans>
