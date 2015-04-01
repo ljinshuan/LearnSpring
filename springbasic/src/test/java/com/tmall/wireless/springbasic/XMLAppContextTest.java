@@ -24,9 +24,6 @@ public class XMLAppContextTest {
 		manager.getWeather("gerg");
 	}
 	
-	@Test
-	public void testShutdownhook(){
-		
-	}
+
 
 }

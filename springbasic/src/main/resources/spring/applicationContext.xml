@@ -8,7 +8,7 @@
 
 	<!-- 支持注解 配置了此项 就可以不用set方法了 -->
 	<context:annotation-config />
-	<context:component-scan base-package="com.tmall.wireless.springbasic.beans"/>
+	<context:component-scan base-package="com.tmall.**.beans"/>
 	<!-- 支持placeholder -->
 	<!-- <context:property-override location="classpath:xx.properties"/>
 	<context:property-placeholder  location="classpath:xx.properties"/> -->
