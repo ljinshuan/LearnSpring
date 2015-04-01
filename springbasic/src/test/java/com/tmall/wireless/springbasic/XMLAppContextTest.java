@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.tmall.wireless.springbasic.beans.WeatherManager;
 
-public class AppContextTest {
+public class XMLAppContextTest {
 
 	private static final String XMLPATH="spring/applicationContext.xml";
 	private static ApplicationContext applicationContext;
