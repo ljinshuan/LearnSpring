@@ -1,5 +1,8 @@
 package com.tmall.wireless.springbasic.beans;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class WeatherService {
 	
 	public WeatherService() {
