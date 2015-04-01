@@ -19,8 +19,5 @@
 		</constructor-arg>
 	</bean>
 	
-	<bean class="com.tmall.wireless.springbasic.aware.ShuanApplicationContextAware"></bean>
-	<bean id="shuanBeanNameAware" class="com.tmall.wireless.springbasic.aware.ShuanBeanNameAware"></bean>
-	<bean class="com.tmall.wireless.springbasic.aware.ShuanBeanClassLoaderAware"/>
-	<bean class="com.tmall.wireless.springbasic.aware.ShuanBeanFactoryAware"/>
+	<bean class="com.tmall.wireless.springbasic.processor.ShuanBeanFactoryPostProcessor"/>
 </beans>
