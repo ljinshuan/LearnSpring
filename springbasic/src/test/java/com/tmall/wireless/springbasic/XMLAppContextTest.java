@@ -1,6 +1,5 @@
 package com.tmall.wireless.springbasic;
 
-import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
