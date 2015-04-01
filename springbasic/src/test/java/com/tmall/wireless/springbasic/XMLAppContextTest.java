@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.tmall.wireless.springbasic.beans.WeatherInfoDO;
 import com.tmall.wireless.springbasic.beans.WeatherManager;
 
 public class XMLAppContextTest {
@@ -20,10 +21,13 @@ public class XMLAppContextTest {
 	@Test
 	public void test() {
 		WeatherManager manager=applicationContext.getBean(WeatherManager.class);
-		
 		manager.getWeather("gerg");
 	}
 	
-
+	@Test
+	public void testOther(){
+		WeatherInfoDO weatherInfoDO=applicationContext.getBean(WeatherInfoDO.class);
+		System.out.println(weatherInfoDO.getWeather());
+	}
 
 }
