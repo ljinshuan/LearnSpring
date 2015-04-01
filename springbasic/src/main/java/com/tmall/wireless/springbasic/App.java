@@ -3,6 +3,7 @@ package com.tmall.wireless.springbasic;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.tmall.wireless.springbasic.beans.WeatherInfoDO;
 import com.tmall.wireless.springbasic.beans.WeatherInterface;
 
 /**
@@ -17,5 +18,8 @@ public class App {
 		WeatherInterface weatherInterface=(WeatherInterface)applicationContext.getBean("weatherInterface");
 		String result=weatherInterface.getWeahterInfo("ljinshuan");
 		System.out.println(result);
+		
+		WeatherInfoDO weatherInfoDO=(WeatherInfoDO)applicationContext.getBean(WeatherInfoDO.class);
+		System.out.println(weatherInfoDO.getTemperature());
 	}
 }

@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="weatherInterface" class="com.tmall.wireless.springbasic.beans.WeatherInterfaceImpl">
+	<bean id="weatherInterface"
+		class="com.tmall.wireless.springbasic.beans.WeatherInterfaceImpl">
 		<property name="weatherService" ref="weatherService"></property>
 	</bean>
 	<bean id="weatherService" class="com.tmall.wireless.springbasic.beans.WeatherService"></bean>
+
+	<bean id="weatherInfoDO" class="com.tmall.wireless.springbasic.beans.WeatherInfoDO">
+		<constructor-arg value="杭州" />
+		<constructor-arg value="阴" />
+		<constructor-arg>
+			<value>10</value>
+		</constructor-arg>
+	</bean>
 </beans>
