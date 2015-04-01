@@ -3,7 +3,7 @@ package com.tmall.wireless.springbasic.beans;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 public class WeatherManager {
 

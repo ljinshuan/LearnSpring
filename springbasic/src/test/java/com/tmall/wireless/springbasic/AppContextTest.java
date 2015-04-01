@@ -23,5 +23,10 @@ public class AppContextTest {
 		
 		manager.getWeather("gerg");
 	}
+	
+	@Test
+	public void testShutdownhook(){
+		
+	}
 
 }
