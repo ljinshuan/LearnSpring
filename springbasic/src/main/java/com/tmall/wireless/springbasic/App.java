@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.tmall.wireless.springbasic.beans.WeatherInfoDO;
 import com.tmall.wireless.springbasic.beans.WeatherInterface;
+import com.tmall.wireless.springbasic.beans.WeatherManager;
 
 /**
  * Hello world!
@@ -21,5 +22,10 @@ public class App {
 		
 		WeatherInfoDO weatherInfoDO=(WeatherInfoDO)applicationContext.getBean(WeatherInfoDO.class);
 		System.out.println(weatherInfoDO.getTemperature());
+		
+
+		WeatherManager manager=applicationContext.getBean(WeatherManager.class);
+		
+		manager.getWeather("gerg");
 	}
 }

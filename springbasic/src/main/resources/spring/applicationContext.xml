@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<!-- depends-on 确保该类在bean创建之前初始化 -->
-	<bean id="weatherInterface"
-		class="com.tmall.wireless.springbasic.beans.WeatherInterfaceImpl" depends-on="weatherService">
-		<property name="weatherService" ref="weatherService"></property>
-	</bean>
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	default-autowire="byName">
+
+	<bean id="weatherManager" class="com.tmall.wireless.springbasic.beans.WeatherManager"></bean>
+	<bean id="weatherInterface" class="com.tmall.wireless.springbasic.beans.WeatherInterfaceImpl"></bean>
 	<bean id="weatherService" class="com.tmall.wireless.springbasic.beans.WeatherService"></bean>
-	
+
 	<bean id="weatherInfoDO" class="com.tmall.wireless.springbasic.beans.WeatherInfoDO">
 		<constructor-arg value="杭州" />
 		<constructor-arg value="阴" />
