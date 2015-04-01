@@ -8,7 +8,7 @@
 		<constructor-arg value="杭州" />
 		<constructor-arg value="阴" />
 		<constructor-arg>
-			<value>10</value>
+			<value>#{T(java.lang.Math).random()*100}</value>
 		</constructor-arg>
 	</bean>
 </beans>

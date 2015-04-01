@@ -28,6 +28,7 @@ public class XMLAppContextTest {
 	public void testOther(){
 		WeatherInfoDO weatherInfoDO=applicationContext.getBean(WeatherInfoDO.class);
 		System.out.println(weatherInfoDO.getWeather());
+		System.out.println(weatherInfoDO.getTemperature());
 	}
 
 }
