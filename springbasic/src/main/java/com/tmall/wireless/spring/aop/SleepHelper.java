@@ -1,20 +1,22 @@
 package com.tmall.wireless.spring.aop;
 
-import java.lang.reflect.Method;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
-import org.springframework.aop.AfterReturningAdvice;
-import org.springframework.aop.MethodBeforeAdvice;
-
-public class SleepHelper implements MethodBeforeAdvice,AfterReturningAdvice{
-
-	public void afterReturning(Object returnValue, Method method,
-			Object[] args, Object target) throws Throwable {
-		System.out.println("afterReturning");
-	}
-
-	public void before(Method method, Object[] args, Object target)
-			throws Throwable {
+@Aspect
+public class SleepHelper{
 	
-		System.out.println("before");
+	@Pointcut("execution(* sleep(..))")
+	public void sleepPointcut(){}
+	
+	@Before("sleepPointcut()")
+	public void beforeSleep(){
+		System.out.println("beforeSleep");
+	}
+	@AfterReturning("sleepPointcut()")
+	public void afterReturn(){
+		System.out.println("afterReturn");
 	}
 }

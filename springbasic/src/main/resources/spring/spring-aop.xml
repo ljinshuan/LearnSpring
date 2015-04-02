@@ -10,15 +10,4 @@
 	<bean id="human" class="com.tmall.wireless.spring.aop.Human"/>
 	<!-- 定义一个bean -->
 	<bean id="sleepHelper" class="com.tmall.wireless.spring.aop.SleepHelper"/>
-	<!-- 定义一个切入点 地点 -->
-	<bean id="sleepPointcut"	class="org.springframework.aop.support.JdkRegexpMethodPointcut">
-		<property name="pattern" value=".*Human.sleep"></property>
-	</bean>
-	
-	<bean id="sleepHelperAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
-		<property name="pointcut" ref="sleepPointcut"/>
-		<property name="advice" ref="sleepHelper"></property>
-	</bean>
-	
-	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"></bean>
 </beans>
