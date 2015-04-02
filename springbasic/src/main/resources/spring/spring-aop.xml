@@ -10,4 +10,13 @@
 	<bean id="human" class="com.tmall.wireless.spring.aop.Human"/>
 	<!-- 定义一个bean -->
 	<bean id="sleepHelper" class="com.tmall.wireless.spring.aop.SleepHelper"/>
+	
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* *.sleep(..))" id="sleepPointcut"/>
+		<aop:aspect ref="sleepHelper">
+			<aop:before method="beforeSleep" pointcut-ref="sleepPointcut"/>
+			<aop:after-returning method="afterReturn" pointcut-ref="sleepPointcut"/>
+		</aop:aspect>
+	</aop:config>
 </beans>
