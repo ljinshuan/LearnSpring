@@ -20,9 +20,5 @@
 		<property name="advice" ref="sleepHelper"></property>
 	</bean>
 	
-	<bean id="humanProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-		<property name="target" ref="human"></property>
-		<property name="interceptorNames" value="sleepHelperAdvisor"></property>
-		<property name="proxyInterfaces" value="com.tmall.wireless.spring.aop.Sleepable"></property>
-	</bean>
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"></bean>
 </beans>
