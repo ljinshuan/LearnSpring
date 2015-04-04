@@ -10,21 +10,8 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.tmall.**.beans"/>
 	<!-- 支持placeholder -->
-	<!-- <context:property-override location="classpath:xx.properties"/>
-	<context:property-placeholder  location="classpath:xx.properties"/> -->
+	<context:property-placeholder  location="classpath:datasource.properties"/>
 	
-	
-	<!-- <bean id="weatherManager" class="com.tmall.wireless.springbasic.beans.WeatherManager"></bean>
-	<bean id="weatherInterface" class="com.tmall.wireless.springbasic.beans.WeatherInterfaceImpl"></bean>
-	<bean id="weatherService" class="com.tmall.wireless.springbasic.beans.WeatherService"></bean>
-
-	<bean id="weatherInfoDO" class="com.tmall.wireless.springbasic.beans.WeatherInfoDO">
-		<constructor-arg value="杭州" />
-		<constructor-arg value="阴" />
-		<constructor-arg>
-			<value>10</value>
-		</constructor-arg>
-	</bean> -->
-	
+	<import resource="classpath*:spring/spring-*.xml"/>
 	
 </beans>
