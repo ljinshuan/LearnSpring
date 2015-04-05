@@ -1,5 +1,9 @@
 package com.tmall.wireless.spring.data.model;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.springframework.core.style.ToStringCreator;
+
 public class CityDO {
 	private int id;
 	private String name;
@@ -35,5 +39,9 @@ public class CityDO {
 	}
 	public void setPopulation(int population) {
 		this.population = population;
+	}
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.DEFAULT_STYLE);
 	}
 }
