@@ -44,4 +44,11 @@
 	</bean>
 	<!-- 基于注解的事务 -->
 	<!-- <tx:annotation-driven transaction-manager="txManager"/> -->
+	
+	<!-- 配置spring-ibatis -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:data/sqlMapConfig.xml"></property>
+	</bean>
+	
 </beans>

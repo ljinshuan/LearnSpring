@@ -21,7 +21,7 @@ import com.tmall.wireless.spring.data.dao.CityDAO;
 import com.tmall.wireless.spring.data.model.CityDO;
 
 @Repository("jdbcCityDao")
-public class CityDaoImpl implements CityDAO {
+public class CityDAOImpl implements CityDAO {
 
 
 	@Resource

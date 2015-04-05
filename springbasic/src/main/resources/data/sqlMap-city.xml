@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="city">
+	<typeAlias alias="cityDO"
+		type="com.tmall.wireless.spring.data.model.CityDO" />
+	<resultMap class="cityDO" id="cityDOMap">
+		<result property="id" column="ID" jdbcType="INT" />
+		<result property="name" column="Name" jdbcType="VARCHAR" />
+		<result property="countryCode" column="CountryCode" jdbcType="VARCHAR" />
+		<result property="district" column="District" jdbcType="VARCHAR" />
+		<result property="population" column="Population" jdbcType="INT" />
+	</resultMap>
+
+	<select id="getCity" resultMap="cityDOMap">
+		select * from city where
+		id=#value#
+	</select>
+	<select id="getCitys" resultMap="cityDOMap">
+		<![CDATA[
+		select * from city where id < #value#
+		]]>
+	</select>
+	<select id="getCount" resultClass="int">
+		select count(*) from city
+	</select>
+
+	<select id="getCountByCountryCode" resultClass="int">
+		select count(*)
+		from city where CountryCode=#value#
+	</select>
+	<insert id="insert" parameterClass="cityDO">
+		<selectKey resultClass="int" keyProperty="id" type="post">
+			select
+			last_insert_id() as ID from city limit 1
+		</selectKey>
+		insert into city (Name,CountryCode,District,Population) values
+		(#name#,#countryCode#,#district#,#population#)
+	</insert>
+
+</sqlMap>
