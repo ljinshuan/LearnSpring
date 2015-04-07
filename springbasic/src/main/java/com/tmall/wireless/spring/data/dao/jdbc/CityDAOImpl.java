@@ -75,7 +75,7 @@ public class CityDAOImpl implements CityDAO {
 	}
 	@Override
 	public int insert() {
-		String sql="insert into city  (Name,CountryCode,District,Population) values (?,?,?,?)";
+		final String sql="insert into city  (Name,CountryCode,District,Population) values (?,?,?,?)";
 		KeyHolder keyHolder=new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			
