@@ -12,6 +12,7 @@
 	<!-- 支持placeholder -->
 	<context:property-placeholder  location="classpath:datasource.properties"/>
 	
-	<import resource="classpath*:spring/spring-*.xml"/>
+	<bean id="shuanApplicationContextAware" class="com.tmall.wireless.springbasic.aware.ShuanApplicationContextAware"/>
+	<!-- <import resource="classpath*:spring/spring-*.xml"/> -->
 	
 </beans>
