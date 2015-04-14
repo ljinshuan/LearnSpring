@@ -1,1 +1,5 @@
-/target/
+/rest/*.gitignore
+/rest/*.project
+/rest/*.springBeans
+/rest/*.classpath
+.settings
