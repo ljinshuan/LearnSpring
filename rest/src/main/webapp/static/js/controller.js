@@ -16,15 +16,28 @@ ngApp.controller('PhoneListCtrl', function($scope) {
 	$scope.username="ljinshuan-user";
 });
 
-ngApp.controller("personInfo",function($scope,$http){
-	$http.get("/person/23").success(function(data) {
-		$scope.person=data;
-	});
-	$scope.doSomething=function(){
-		console.log("do something");
-	};
-});
+
 
 ngApp.controller("userController",function($scope,userService){
 	$scope.user=userService.get("ljinshuan");
 });
+
+ngApp.controller("PersonListController",function($scope,Person){
+	$scope.persons=Person.query();
+	$scope.show=function(pid){
+		$scope.person=Person.get({pid:pid});
+	}
+	$scope.edit=function(pid){
+		Person.save({pid:pid},$scope.person);
+	}
+	$scope.remove=function(pid){
+		$scope.person.$remove();
+	}
+	$scope.insert=function(){
+		$scope.person=new Person();
+		$scope.person.name="ljinshuan";
+		$scope.person.age=11;
+		$scope.person.$save();
+	}
+});
+

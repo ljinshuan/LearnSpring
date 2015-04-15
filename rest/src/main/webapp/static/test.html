@@ -4,10 +4,11 @@
 <head>
 <meta charset="utf-8" />
 
-<script
-	src="https://dn-cdnjscn.qbox.me/ajax/libs/angular.js/1.3.9/angular.js"></script>
-<script type="text/javascript" src="../static/js/ngAppService.js"></script>
-<script type="text/javascript" src="../static/js/controller.js"></script>
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.js"></script>
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular-resource.js"></script>
+<script src=http://apps.bdimg.com/libs/angular.js/1.3.9/angular-route.js></script>
+<script src="../static/js/ngAppService.js"></script>
+<script src="../static/js/controller.js"></script>
 </head>
 <body>
 
@@ -27,18 +28,19 @@
 		<div ng-bind="username"></div>
 	</div>
 
-	<div ng-controller="personInfo">
-		{{person.name}}
-
-		<div>
-			<span ng-click="doSomething($)">Click Me</span>
-		</div>
-	</div>
+	
 	<!-- 注册服务 -->
 	<div ng-controller="userController">
 		<p ng-bind="user.username + user.pwd"></p>
 	</div>
 
+	<div ng-controller="PersonListController">
+		<ul>
+			<li ng-repeat="person in persons">{{person.name}} <a ng-click="show(person.id)" href="#">查看</a><a ng-click="edit(person.id)" href="#">编辑</a><a ng-click="remove(person.id)" href="#">删除</a></li>
+		</ul>
+		<a ng-click="insert()" href="#">插入</a>
+		<span ng-bind="person.name"></span>
+	</div>
 
 </body>
 </html>
