@@ -12,6 +12,6 @@ public class HomeController {
 	public String home(Model model){
 		model.addAttribute("username", "ljinshuan");
 		System.out.println("Home");
-		return "home";
+		return "index";
 	}
 }
