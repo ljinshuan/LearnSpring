@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.tmall.wireless.springbasic.beans.WeatherManager;
+
 
 public class AOPTest {
 private static final String XMLPATH="spring/applicationContext.xml";
@@ -18,5 +20,11 @@ private static final String XMLPATH="spring/applicationContext.xml";
 	public void test() {
 		Sleepable sleeper=(Sleepable)applicationContext.getBean("human");
 		sleeper.sleep();
+	}
+	
+	@Test
+	public void test2(){
+		WeatherManager weatherManager=(WeatherManager)applicationContext.getBean("weatherManager");
+		weatherManager.getWeather("vvvv");
 	}
 }
