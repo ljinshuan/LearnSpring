@@ -9,6 +9,11 @@
 	<artifactId>angel-common</artifactId>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -42,7 +47,10 @@
 			<groupId>aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>
