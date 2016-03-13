@@ -13,9 +13,7 @@
 	<!-- 开启注解注入 -->
 	<context:annotation-config/>
 	<!-- 开启包扫描 -->
-	<context:component-scan base-package="com.tmall.wireless.angel" />
 	
-	<context:property-placeholder location="classpath:spring/application.properties"/>
 	
 	<!-- <bean id="messageProvider" class="com.tmall.wireless.angel.impl.HelloWorldMessageProvider"></bean>
 
