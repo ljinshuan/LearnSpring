@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
 	<mvc:annotation-driven>
-			<mvc:message-converters>
-				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
-			</mvc:message-converters>
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+		</mvc:message-converters>
 	</mvc:annotation-driven>
-	
-	<mvc:resources location="/resources/**" mapping="resources"/>
-	
+
+	<mvc:resources location="/resources/**" mapping="resources" />
+
 	<context:component-scan base-package="com.tmall.wireless.angel" />
+
+	<context:property-placeholder
+		location="classpath*:spring/application.properties" />
+
 	
-	<context:property-placeholder location="classpath*:spring/application.properties"/>
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<!-- 拦截所有请求 -->
+		<bean class="com.tmall.wireless.angel.web.inceptor.RequestInterceptor"></bean>
+	</mvc:interceptors>
+	
+	<bean class="com.tmall.wireless.angel.web.config.CorsConfigurerAdapter"></bean>
 </beans>

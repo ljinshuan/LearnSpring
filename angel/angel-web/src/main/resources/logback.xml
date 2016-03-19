@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration encoding="utf-8" scan="true" scanPeriod="10 seconds">
+	<property name="APP_Name" value="angel" />
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} %-5level %msg %n
+			</Pattern>
+		</encoder>
+	</appender>
+	
+	
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+</configuration>
