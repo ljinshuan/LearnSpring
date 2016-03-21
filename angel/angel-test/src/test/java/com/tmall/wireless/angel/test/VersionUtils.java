@@ -1,9 +1,16 @@
 package com.tmall.wireless.angel.test;
 
+
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
+
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
 
 public class VersionUtils {
 
+	private static Splitter splitter=Splitter.on('.').trimResults().omitEmptyStrings();
 	/**
 	 * version >= version2
 	 * 
@@ -16,35 +23,23 @@ public class VersionUtils {
 			return false;
 		}
 
-		version = toMaxLenght(version);
-		version2 = toMaxLenght(version2);
-
-		int intVersion1 = ClientVersionUtils.representInInt(version);
-		int intVersion2 = ClientVersionUtils.representInInt(version2);
+		List<String> version1Parts=Lists.newArrayList(splitter.splitToList(version)); 
+		List<String> version2Parts=Lists.newArrayList(splitter.splitToList(version2));
+		
+		if (version1Parts.size()>version2Parts.size()) {
+			version2Parts.add("0");
+		}else if (version1Parts.size()<version2Parts.size()) {
+			version1Parts.add("0");
+		}
+		
+		//计算出一个整数值
+		int intVersion1=ClientVersionUtils.parts2Int(version1Parts);
+		int intVersion2=ClientVersionUtils.parts2Int(version2Parts);
 
 		return intVersion1 >= intVersion2;
 	}
 
-	/**
-	 * 补全0
-	 * 
-	 * @param version
-	 * @return
-	 */
-	private static String toMaxLenght(String version) {
-
-		String[] parts = version.split("\\.");
-
-		int diff = ClientVersionUtils.MAX_VERSION_PART - parts.length;
-
-		if (diff == 0) {
-			return version;
-		}
-		for (int i = 0; i < diff; i++) {
-			version += ".0";
-		}
-		return version;
-	}
+	
 
 	/**
 	 * version2<=version
@@ -58,12 +53,19 @@ public class VersionUtils {
 			return false;
 		}
 		
-		version = toMaxLenght(version);
-		version2 = toMaxLenght(version2);
 		
-		int intVersion1 = ClientVersionUtils.representInInt(version);
-		int intVersion2 = ClientVersionUtils.representInInt(version2);
+		List<String> version1Parts=Lists.newArrayList(splitter.splitToList(version)); 
+		List<String> version2Parts=Lists.newArrayList(splitter.splitToList(version2));
 		
+		if (version1Parts.size()>version2Parts.size()) {
+			version2Parts.add("0");
+		}else if (version1Parts.size()<version2Parts.size()) {
+			version1Parts.add("0");
+		}
+		
+		//计算出一个整数值
+		int intVersion1=ClientVersionUtils.parts2Int(version1Parts);
+		int intVersion2=ClientVersionUtils.parts2Int(version2Parts);
 		return intVersion2<=intVersion1;
 	}
 }

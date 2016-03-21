@@ -1,5 +1,6 @@
 package com.tmall.wireless.angel.test;
 
+import java.util.List;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,6 +8,9 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
 
 /**
  * 对客户端版本处理的工具类
@@ -22,6 +26,8 @@ public class ClientVersionUtils {
 	private static final Logger logger = LoggerFactory.getLogger(ClientVersionUtils.class);
 
 	public static final int MAX_VERSION_PART = 4;
+
+	private static Splitter splitter = Splitter.on('.').trimResults().omitEmptyStrings();
 
 	/**
 	 * 用正数表示版本,版本必须是类似xx.yy.zz，xx，xx.yy,xx.yy.zz.aa等形式，不满足要求的返回0
@@ -46,24 +52,21 @@ public class ClientVersionUtils {
 		if (length > MAX_VERSION_PART) {
 			return 0;
 		}
-		int value = 0;
-		/**
-		 * max space for part, eg: 45.34.30, in this case max space is 2 while
-		 * for 344.0.2, the max space is 3
-		 */
-		int maxSpace = 2;
 
-		for (int i = length; i > 0; i--) {
-			int tensPlus = (int) Math.pow(10, maxSpace * (i) - 1);
-			int unitsPlus = (int) Math.pow(10, maxSpace * (i) - 2);
-			int toPlus = Integer.parseInt(parts[length - i]);
-			int tens = toPlus / 10;
-			int units = toPlus % 10;
-			value += (tensPlus * tens);
-			value += (unitsPlus * units);
+		List<String> versionParts = Lists.newArrayList(splitter.splitToList(version));
+
+		return parts2Int(versionParts);
+
+	}
+
+	public static int parts2Int(List<String> parts) {
+		int sum = 0;
+		for (String part : parts) {
+			sum *= 100;
+			sum += Integer.valueOf(part);
 		}
-		return value;
 
+		return sum;
 	}
 
 	/**
@@ -114,8 +117,6 @@ public class ClientVersionUtils {
 		return version;
 
 	}
-
-	
 
 	/**
 	 * 把一个数字形式的版本转换成规范定义的版本号，例如定义版本为3位，则99912转化为 9.99.12

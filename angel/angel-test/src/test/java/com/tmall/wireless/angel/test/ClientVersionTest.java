@@ -73,6 +73,12 @@ public class ClientVersionTest {
 	@Test
 	public void test10(){
 		boolean result=VersionUtils.isEarlyEqualThen("5.12.3.4","5.12.3" );
+		assertEquals(true, result);
+	}
+	
+	@Test
+	public void test11(){
+		boolean result=VersionUtils.isEarlyEqualThen("5.1.3.4","5.10.3" );
 		assertEquals(false, result);
 	}
 
