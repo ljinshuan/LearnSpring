@@ -33,6 +33,11 @@
 				<artifactId>angel-common</artifactId>
 				<version>${version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.tmall.wireless</groupId>
+				<artifactId>angel-test</artifactId>
+				<version>${version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>junit</groupId>
