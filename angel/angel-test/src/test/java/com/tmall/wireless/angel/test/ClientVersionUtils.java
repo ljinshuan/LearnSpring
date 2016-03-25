@@ -22,7 +22,7 @@ public class ClientVersionUtils {
 	/**
 	 * 版本号的正则表达式
 	 */
-	private static final Pattern CLIENT_VERSION_PATTERN = Pattern.compile("^([1-9]\\d{0,1}\\.){2,3}[1-9]\\d{0,1}$");
+	private static final Pattern CLIENT_VERSION_PATTERN=Pattern.compile("^([1-9]\\d{0,1}\\.)((0|([1-9]\\d{0,1})).){1,2}(0|([1-9]\\d{0,1}))$"); 
 	private static final Logger logger = LoggerFactory.getLogger(ClientVersionUtils.class);
 
 	public static final int MAX_VERSION_PART = 4;
