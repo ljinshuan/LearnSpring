@@ -11,13 +11,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 	
 	<!-- 开启注解注入 -->
-	<context:annotation-config/>
+	 <context:annotation-config/>
 	<!-- 开启包扫描 -->
+	<context:component-scan base-package="com.tmall.wireless.angel"/>
 	
 	
-	<!-- <bean id="messageProvider" class="com.tmall.wireless.angel.impl.HelloWorldMessageProvider"></bean>
-
-	<bean id="messageRender" class="com.tmall.wireless.angel.impl.StandardOutMessageRender"/> -->
 		
 	<aop:config>
 		<aop:pointcut expression="execution(* com.tmall.wireless.angel..*.render*(..))" id="render" />

@@ -31,5 +31,9 @@ public class StandardOutMessageRender implements MessageRender {
 	public void setMessageProvider(MessageProvider messageProvider) {
 		this.messageProvider = messageProvider;
 	}
+	
+	public StandardOutMessageRender(){
+		logger.info("in StandardOutMessageRender");
+	}
 
 }
