@@ -20,9 +20,14 @@ public class CustomAdvice {
 		
 		logger.info(joinPoint.toLongString());
 		
-	
+		
 		logger.info("after");
 		
 		return "1234";
+	}
+	
+	public CustomAdvice(){
+		
+		
 	}
 }
