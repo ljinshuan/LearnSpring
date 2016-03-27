@@ -24,6 +24,9 @@ public class RequestUtils {
 	 */
 	public static void logRequest(HttpServletRequest request) {
 
+		if (true) {
+			return ;
+		}
 		logger.debug("requestURL:{}", request.getRequestURI());
 		logger.debug("method:{}",request.getMethod());
 		Enumeration<String> names = request.getHeaderNames();
@@ -36,6 +39,9 @@ public class RequestUtils {
 
 	public static void logResponse(HttpServletResponse response) {
 		
+		if (true) {
+			return;
+		}
 		logger.debug("responseStatus:{}",response.getStatus());
 	
  		Collection<String> names = response.getHeaderNames();

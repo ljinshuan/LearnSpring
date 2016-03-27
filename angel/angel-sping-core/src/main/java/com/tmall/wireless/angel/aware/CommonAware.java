@@ -22,7 +22,7 @@ public class CommonAware implements BeanNameAware,BeanClassLoaderAware,Applicati
 	@Override
 	public void setBeanName(String name) {
 		
-		logger.info(name);
+		//logger.info(name);
 	}
 
 	@Override

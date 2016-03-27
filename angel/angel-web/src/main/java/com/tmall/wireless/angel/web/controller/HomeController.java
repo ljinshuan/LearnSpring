@@ -6,12 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.Module;
 import com.tmall.wireless.angel.MessageRender;
 import com.tmall.wireless.angel.web.vo.Contacter;
 
@@ -46,5 +49,14 @@ public class HomeController {
 		}
 
 		return contacterRO;
+	}
+	
+	@RequestMapping(value="/Index",method=RequestMethod.GET)
+	public String index(Model model){
+		
+		model.addAttribute("name", "ljinshuan");
+		
+		return "index";
+		
 	}
 }

@@ -16,7 +16,7 @@ public class CustomBeanPostProcessor implements BeanPostProcessor{
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 		
 		
-		logger.info("before beanName {}",beanName);
+		//logger.info("before beanName {}",beanName);
 		
 		return bean;
 	}
@@ -28,7 +28,7 @@ public class CustomBeanPostProcessor implements BeanPostProcessor{
 			return bean;
 		}
 		
-		logger.info("after beanName {}",beanName);
+		//logger.info("after beanName {}",beanName);
 		
 		return bean;
 	}
