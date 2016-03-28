@@ -91,5 +91,14 @@ public class ClientVersionTest {
 		result=ClientVersionUtils.validate("1.10.0.1");
 		assertTrue(result);
 	}
+	
+	@Test
+	public void test13(){
+		boolean result=ClientVersionUtils.validate("5.0.0");
+		
+		assertTrue(result);
+		
+		
+	}
 
 }
