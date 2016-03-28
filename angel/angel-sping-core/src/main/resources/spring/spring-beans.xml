@@ -21,8 +21,7 @@
 		<aop:pointcut expression="execution(* com.tmall.wireless.angel..*.render*(..))" id="render" />
 		<aop:aspect ref="customAdvice">
 			<aop:before pointcut-ref="render" method="beforeAdvice"/>
-			<aop:around method="aroundAdvice" pointcut-ref="render"/>
-				
+			<aop:around method="aroundAdvice" pointcut-ref="render"/>		
 		</aop:aspect>
 		
 	</aop:config>
