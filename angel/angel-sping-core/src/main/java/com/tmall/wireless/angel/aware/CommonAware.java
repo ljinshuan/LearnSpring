@@ -28,7 +28,11 @@ public class CommonAware implements BeanNameAware,BeanClassLoaderAware,Applicati
 	@Override
 	public void setBeanClassLoader(ClassLoader classLoader) {
 	
-		logger.info(classLoader.toString());
+		while(classLoader!=null){
+			logger.info(classLoader.toString());
+			classLoader=classLoader.getParent();
+		}
+		
 		
 	}
 

@@ -18,6 +18,8 @@
 		<module>angel-sping-core</module>
 		<module>angel-common</module>
 		<module>angel-web</module>
+		<module>angel-test</module>
+		<module>angel-webloader</module>
 	</modules>
 
 	<dependencyManagement>
@@ -36,6 +38,11 @@
 			<dependency>
 				<groupId>com.tmall.wireless</groupId>
 				<artifactId>angel-test</artifactId>
+				<version>${version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.tmall.wireless</groupId>
+				<artifactId>angel-webloader</artifactId>
 				<version>${version}</version>
 			</dependency>
 
@@ -146,6 +153,23 @@
 				<version>3.1</version>
 			</dependency>
 
+			<dependency>
+				<groupId>org.apache.tomcat.embed</groupId>
+				<artifactId>tomcat-embed-jasper</artifactId>
+				<version>9.0.0.M4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.tomcat.embed</groupId>
+				<artifactId>tomcat-embed-core</artifactId>
+				<version>9.0.0.M4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.tomcat.embed</groupId>
+				<artifactId>tomcat-embed-logging-juli</artifactId>
+				<version>9.0.0.M4</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
