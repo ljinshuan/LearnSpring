@@ -2,19 +2,18 @@ package com.tmall.wireless.angel.test.redis;
 
 import com.tmall.wireless.angel.MessageProvider;
 import com.tmall.wireless.angel.test.BaseTest;
+import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.reactivestreams.Publisher;
 import org.redisson.Config;
 import org.redisson.Redisson;
 import org.redisson.RedissonClient;
-import org.redisson.api.RAtomicLongReactive;
-import org.redisson.api.RedissonReactiveClient;
-import org.redisson.core.RAtomicLong;
-import org.springframework.util.Assert.*;
+import org.redisson.core.*;
 
 import javax.annotation.Resource;
 
-import static org.springframework.util.Assert.isTrue;
+import static org.junit.Assert.*;
+
 
 /**
  * Created by ljinshuan on 2016/7/29 0:00.
@@ -32,20 +31,60 @@ public class RedisTest extends BaseTest {
 
     }
 
-    @Test
-    public void testConnect() {
-
+    public static RedissonClient redissonClient;
+    @BeforeClass
+    public static void init(){
         Config config = new Config();
         config.setUseLinuxNativeEpoll(false);
         config.useSingleServer().setAddress("192.168.109.131:6379");
 
-        RedissonReactiveClient redisson = Redisson.createReactive(config);
+        redissonClient = Redisson.create(config);
+    }
 
-        RAtomicLongReactive longObject = redisson.getAtomicLong("myLong");
-        Publisher<Long> longPublisher = longObject.get();
+    @Test
+    public void testConnect() {
+
+        RAtomicLong longObject = redissonClient.getAtomicLong("myLong");
+        long longPublisher = longObject.get();
         longObject.set(100L);
 
-        isTrue(true);
+    }
+
+    @Test
+    public void testObject(){
+        RBucket<String> rBucket = redissonClient.getBucket("BucketKey");
+       // rBucket.set("ljinshuan");
+        String result = rBucket.get();
+
+        assertEquals(result,"ljinshuan");
+    }
+
+    @Test
+    public void testTopic() throws InterruptedException {
+        RTopic<String> topic=redissonClient.getTopic("anyTopic");
+        topic.addListener(new MessageListener<String>() {
+            @Override
+            public void onMessage(String channel, String msg) {
+                logger.debug("{} {}",channel,msg);
+            }
+        });
+
+
+        long publish = topic.publish("hehe hello");
+
+        Thread.sleep(5000);
+    }
+
+    @Test
+    public void testMap(){
+        RMap<String, Object> mapTest = redissonClient.getMap("mapTest");
+
+
+    }
+
+    @Test
+    public void testLock(){
+        RLock lock=redissonClient.getLock("anyLock");
 
 
     }
