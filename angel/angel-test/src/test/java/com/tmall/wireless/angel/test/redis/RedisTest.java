@@ -12,6 +12,11 @@ import org.redisson.core.*;
 
 import javax.annotation.Resource;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantLock;
+
 import static org.junit.Assert.*;
 
 
@@ -32,11 +37,12 @@ public class RedisTest extends BaseTest {
     }
 
     public static RedissonClient redissonClient;
-    @BeforeClass
-    public static void init(){
+
+   @BeforeClass
+    public static void init() {
         Config config = new Config();
         config.setUseLinuxNativeEpoll(false);
-        config.useSingleServer().setAddress("192.168.109.131:6379");
+        config.useSingleServer().setAddress("192.168.109.132:6379");
 
         redissonClient = Redisson.create(config);
     }
@@ -51,21 +57,21 @@ public class RedisTest extends BaseTest {
     }
 
     @Test
-    public void testObject(){
+    public void testObject() {
         RBucket<String> rBucket = redissonClient.getBucket("BucketKey");
-       // rBucket.set("ljinshuan");
+        // rBucket.set("ljinshuan");
         String result = rBucket.get();
 
-        assertEquals(result,"ljinshuan");
+        assertEquals(result, "ljinshuan");
     }
 
     @Test
     public void testTopic() throws InterruptedException {
-        RTopic<String> topic=redissonClient.getTopic("anyTopic");
+        RTopic<String> topic = redissonClient.getTopic("anyTopic");
         topic.addListener(new MessageListener<String>() {
             @Override
             public void onMessage(String channel, String msg) {
-                logger.debug("{} {}",channel,msg);
+                logger.debug("{} {}", channel, msg);
             }
         });
 
@@ -76,16 +82,47 @@ public class RedisTest extends BaseTest {
     }
 
     @Test
-    public void testMap(){
+    public void testMap() {
         RMap<String, Object> mapTest = redissonClient.getMap("mapTest");
 
 
     }
 
     @Test
-    public void testLock(){
-        RLock lock=redissonClient.getLock("anyLock");
+    public void testLock() {
+        RLock lock = redissonClient.getLock("anyLock");
+        lock.lock();
+        logger.info("fewf");
 
 
+        testObject();
+        lock.unlock();
+
+
+    }
+
+    static final ReentrantLock reentrantLock = new ReentrantLock();
+    @Test
+    public void testReentranLock() throws InterruptedException {
+
+        CountDownLatch countDownLatch=new CountDownLatch(1);
+        reentrantLock.lock();
+
+        reentrantLock.unlock();
+        Thread thread=new Thread(new TestLock());
+        thread.start();
+        countDownLatch.await();
+    }
+
+    class TestLock implements Runnable{
+
+
+        @Override
+        public void run() {
+            logger.debug("before");
+            RedisTest.reentrantLock.lock();
+            logger.debug("test");
+
+        }
     }
 }
