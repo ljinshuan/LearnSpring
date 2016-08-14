@@ -3,7 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tmall.wireless.angel.dao.CityMapper">
-
     <resultMap id="resultMap" type="CityDO">
         <id property="id" column="ID" jdbcType="INTEGER" javaType="long"/>
         <result property="name" column="Name"/>
@@ -14,6 +13,10 @@
 
     <select id="getCityById" parameterType="long" resultMap="resultMap">
             SELECT * from city WHERE ID=#{value}
+    </select>
+
+    <select id="getCityByName" parameterType="map" resultMap="resultMap">
+         SELECT * from city WHERE Name=#{name}
     </select>
 
 
