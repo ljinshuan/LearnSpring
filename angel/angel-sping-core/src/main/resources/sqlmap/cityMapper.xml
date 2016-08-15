@@ -4,7 +4,7 @@
 
 <mapper namespace="com.tmall.wireless.angel.dao.CityMapper">
     <resultMap id="resultMap" type="CityDO">
-        <id property="id" column="ID" jdbcType="INTEGER" javaType="long"/>
+        <result property="id" column="ID" jdbcType="INTEGER" javaType="long"/>
         <result property="name" column="Name"/>
         <result property="countryCode" column="CountryCode"/>
         <result property="district" column="District"/>
@@ -18,6 +18,13 @@
     <select id="getCityByName" parameterType="map" resultMap="resultMap">
          SELECT * from city WHERE Name=#{name}
     </select>
+
+    <insert id="insert" parameterType="CityDO">
+        INSERT INTO city (Name,CountryCode,District,Population) VALUES (#{name},#{countryCode},#{district},#{population})
+        <selectKey keyProperty="id" resultType="java.lang.Long">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
 
 
 </mapper>

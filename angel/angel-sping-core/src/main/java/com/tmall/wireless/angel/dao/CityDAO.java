@@ -31,4 +31,8 @@ public class CityDAO {
         return sqlSession.selectOne(NameSpace+"getCityByName",params);
     }
 
+    public long insert(CityDO cityDO){
+        return sqlSession.insert(NameSpace+"insert",cityDO);
+    }
+
 }

@@ -51,5 +51,18 @@ public class MyBatisTest extends BaseTest {
 		logger.info(AngelStringUtils.toString(cityDO));
 	}
 
+	@Test
+	public void testInsert(){
+
+		CityDO cityDO = cityDAO.getById(4000L);
+		logger.info(AngelStringUtils.toString(cityDO));
+
+		cityDO.setName("ljinshuan3");
+
+		long insert = cityDAO.insert(cityDO);
+
+		logger.info(AngelStringUtils.toString(cityDO));
+	}
+
 
 }
